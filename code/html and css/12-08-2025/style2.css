@@ -1,0 +1,21 @@
+*{
+    background-color: aqua;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:brown;
+}
+
+h1, h2 {
+    color: orange;
+}
+
+
+.para {
+    color: green;
+    font-size: 20px;
+}
+
+#head {
+    color: red;
+    text-decoration: underline;
+    background-color: white;
+}

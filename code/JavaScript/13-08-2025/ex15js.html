@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>City Dropdown</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        background: white;
+        padding: 20px 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+    select, button {
+        padding: 8px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    button {
+        background: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>City Selector</h2>
+    <button onclick="populateCities()">Load Cities</button>
+    <br>
+    <select id="cityDropdown">
+        <option value="">-- Select a City --</option>
+    </select>
+</div>
+
+<script>
+
+    const cities = ["Delhi", "Bangalore", "Mumbai", "Hyderabad", "Chennai", "Pune", "Kolkata"];
+
+    function populateCities() {
+        const dropdown = document.getElementById("cityDropdown");
+
+        dropdown.length = 1; 
+
+        const sortedCities = cities.slice().sort();
+
+
+        sortedCities.forEach(city => {
+            const option = document.createElement("option");
+            option.value = city;
+            option.textContent = city;
+            dropdown.appendChild(option);
+        });
+    }
+</script>
+
+</body>
+</html>

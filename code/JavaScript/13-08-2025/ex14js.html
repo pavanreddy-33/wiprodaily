@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 50px;
+    }
+    .todo-container {
+        background: white;
+        padding: 20px 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        width: 350px;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    input {
+        width: 75%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 8px 12px;
+        margin-left: 5px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #45a049;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 20px;
+    }
+    li {
+        background: #f1f1f1;
+        padding: 8px;
+        border-radius: 5px;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .delete-btn {
+        background: red;
+        color: white;
+        border: none;
+        padding: 5px 8px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .delete-btn:hover {
+        background: darkred;
+    }
+</style>
+</head>
+<body>
+    <div class="todo-container">
+        <h2>To-Do List</h2>
+        <input type="text" id="taskInput" placeholder="Enter a new task">
+        <button onclick="addTask()">Add</button>
+
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+function addTask() {
+    const taskInput = document.getElementById("taskInput");
+    const taskText = taskInput.value;
+
+    if (taskText === "") {
+        alert("Please enter a task.");
+        return;
+    }
+
+    const li = document.createElement("li");
+    li.textContent = taskText;
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.className = "delete-btn";
+    deleteBtn.onclick = function() {
+        li.remove();
+    };
+
+    li.appendChild(deleteBtn);
+    document.getElementById("taskList").appendChild(li);
+
+    taskInput.value = "";
+}
+</script>
+</body>
+</html>

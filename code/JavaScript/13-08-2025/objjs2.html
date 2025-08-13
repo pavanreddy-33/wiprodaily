@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce</title>
+</head>
+<body>
+    <script>
+        let a=[
+            {
+                empName:"pavan",
+                role:"Manager",
+                empId:"Emp-033",
+                "salary":50000
+            },
+            {
+                empName:"chanduu",
+                role:"Manager",
+                empId:"Emp-03",
+                "salary":50000
+            },
+            {
+                empName:"sai",
+                role:"developer",
+                empId:"Emp-01",
+                "salary":35000
+            },
+            {
+                empName:"sam",
+                role:"Manager",
+                empId:"Emp-01",
+                "salary":49000
+            }
+        ];
+        let b=a.filter(e=>e.role=="Manager").reduce((acc,emp)=>acc+emp.salary,0);
+        console.log(b);
+    </script>
+</body>
+</html>

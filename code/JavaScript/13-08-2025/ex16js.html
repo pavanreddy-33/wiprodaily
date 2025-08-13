@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Image Gallery</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .gallery-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+    img {
+        max-width: 400px;
+        max-height: 300px;
+        display: block;
+        margin: 0 auto 15px;
+        border-radius: 5px;
+    }
+    button {
+        padding: 8px 12px;
+        margin: 5px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="gallery-container">
+    <img id="galleryImage" src="" alt="Gallery Image">
+    <br>
+    <button onclick="prevImage()">Prev</button>
+    <button onclick="nextImage()">Next</button>
+</div>
+
+<script>
+    const images = [
+        "https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-118143566.jpg",
+        "https://static.vecteezy.com/system/resources/thumbnails/007/950/588/small_2x/hands-protecting-trees-world-environment-day-concept-photo.jpg",
+        "https://static.vecteezy.com/system/resources/thumbnails/002/489/670/small/concept-of-environmental-conservation-and-global-warming-photo.jpg",
+        "https://www.shutterstock.com/image-photo/earth-day-world-environment-concept-260nw-1952301607.jpg"
+    ];
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+        const imgElement = document.getElementById("galleryImage");
+        imgElement.src = images[index];
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+    }
+
+    showImage(currentIndex);
+</script>
+
+</body>
+</html>

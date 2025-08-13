@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map function</title>
+</head>
+<body>
+    <script>
+        let persons=[
+            {
+                name:"pavan",
+                age:23
+            },
+            {
+                name:"chandu",
+                age:24
+            },
+            {
+                name:"sai",
+                age:17
+            },
+            {
+                name:"sam",
+                age:15
+            }
+        ];
+        persons.map(i=>{
+            if(i.age>=18){
+                i.status="Adult";
+            }else{
+                i.status="Minor";
+            }
+        });
+        console.log(persons);
+    </script>
+</body>
+</html>

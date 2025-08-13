@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple Quiz App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+      .container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      .options {
+        margin-top: 15px;
+      }
+      .options button {
+        display: block;
+        width: 100%;
+        margin-bottom: 8px;
+        padding: 8px;
+      }
+      #feedback {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      #score {
+        margin-top: 15px;
+      }
+      #nextBtn {
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Quiz App</h2>
+      <div id="question"></div>
+      <div class="options" id="options"></div>
+      <div id="feedback"></div>
+      <div id="score"></div>
+      <button id="nextBtn">Next Question</button>
+    </div>
+    <script src="quiz.js"></script>
+  </body>
+</html>

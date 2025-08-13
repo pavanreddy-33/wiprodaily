@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function palindrome(s){
+            if(s===s.split("").reverse().join("")){
+                console.log(`${s} is Palindrome`);
+            }
+            else{
+                console.log(`${s} is not a Palindrome`);
+            }
+        }
+        palindrome("madam");
+        //console.log("pavan".split());
+    </script>
+</body>
+</html>
