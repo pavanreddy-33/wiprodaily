@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex-14</title>
+</head>
+<body>
+    <h2>Login Page</h2>
+
+  <label for="userId">User ID:</label>
+  <input type="text" id="userId" placeholder="Enter User ID"><br><br>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" placeholder="Enter Password"><br><br>
+
+  <button id="loginBtn">Login</button>
+  <button id="logoutBtn">Logout</button>
+
+  <p id="status"></p>
+
+  <script>
+    const userIdInput = document.getElementById("userId");
+    const passwordInput = document.getElementById("password");
+    const statusText = document.getElementById("status");
+
+    
+    document.getElementById("loginBtn").addEventListener("click", function () {
+      const userId = userIdInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (userId && password) {
+        localStorage.setItem("userId", userId);
+        statusText.textContent = `Logged in as: ${userId}`;
+      } else {
+        alert("Please enter both User ID and Password");
+      }
+    });
+
+    
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+      localStorage.removeItem("userId");
+      statusText.textContent = "Logged out.";
+      userIdInput.value="";
+      passwordInput.value="";
+    });
+  </script>
+</body>
+</html>
