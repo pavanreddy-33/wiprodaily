@@ -1,0 +1,39 @@
+<div class="card p-3">
+  <h3>Booking</h3>
+
+  <div *ngIf="flight">
+    <div class="mb-3">
+      <strong>{{ flight.airline }} - {{ flight.flightNumber }}</strong>
+      <div>{{ flight.source }} → {{ flight.destination }}</div>
+      <div>Price: ₹{{ flight.price }}</div>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onBook()">
+    <div class="mb-2">
+      <label class="form-label">Passenger Name</label>
+      <input class="form-control" [(ngModel)]="passengerName" name="passengerName" required />
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label">Travel Date</label>
+      <input class="form-control" type="date" [(ngModel)]="travelDate" name="travelDate" required />
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label">Card Number</label>
+      <input class="form-control" [(ngModel)]="cardNumber" name="cardNumber" placeholder="16 digits" maxlength="19" />
+    </div>
+
+    <div class="mb-2">
+      <label class="form-label">Expiry (MM/yyyy)</label>
+      <input class="form-control" [(ngModel)]="expiry" name="expiry" placeholder="MM/yyyy" />
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="submitting">
+      {{ submitting ? 'Processing...' : 'Pay & Book' }}
+    </button>
+  </form>
+</div>

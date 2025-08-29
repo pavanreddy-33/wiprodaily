@@ -1,0 +1,7 @@
+<div class="card p-3">
+  <h3>Payment Failed</h3>
+  <p *ngIf="booking">Booking ID: {{ booking.bookingId }}</p>
+  <p *ngIf="booking">Status: {{ booking.status }}</p>
+  <p *ngIf="booking">Please try booking again.</p>
+  <button class="btn btn-primary" routerLink="/">Back to Home</button>
+</div>

@@ -1,32 +1,28 @@
 package com.wipro.flightdatams.entity;
 
+import jakarta.persistence.*;
+import lombok.*;
 import java.time.LocalDate;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.Data;
-
 @Entity
-@Table(name="flight")
+@Table(name = "flights")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Flight {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+	private int id;
+	@Column(name="airline")
+	private String airline;
 	@Column(name="flight_number")
 	private String flightNumber;
-	
-	@Column(name="aircraft_name")
-	private String aircraftName;
-	
 	private String source;
 	private String destination;
-	private LocalDate validFrom;
-	private LocalDate validTo;
-	private double price;
+	private Double price;
+	@Column(name="price_from")
+	private LocalDate priceEffectiveFrom;
+	@Column(name="price_to")
+	private LocalDate priceEffectiveTo;
 }
