@@ -1,0 +1,27 @@
+.method-list {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.method-item {
+width: 100%;
+text-align: left;
+border: 1px solid #e9ecef;
+background: #fff;
+padding: 10px 12px;
+border-radius: 8px;
+cursor: pointer;
+}
+.method-item.active {
+border-color: #0a6cff;
+box-shadow: 0 0 0 2px rgba(10,108,255,0.15);
+}
+.method-item.disabled {
+color: #999;
+cursor: not-allowed;
+background: #f8f9fa;
+}
+.card {
+border-radius: 12px;
+box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}

@@ -1,0 +1,84 @@
+<div class="home-wrap" (click)="closeLists()"> <div class="container home-card" (click)="stopClose($event)"> <h3 class="mb-3">Search Flights</h3>
+<img src="https://www.shutterstock.com/image-vector/airplane-icon-vector-transportation-logo-600nw-1283834365.jpg" class="i"/>
+
+<form (ngSubmit)="submit()" autocomplete="off">
+  <div class="row g-3 align-items-end">
+
+    <!-- From -->
+    <div class="col-md-4 position-relative">
+      <label class="form-label">From</label>
+      <input class="form-control"
+             [class.is-invalid]="submitted && !fromSel"
+             [value]="fromText"
+             (focus)="onFromFocus()"
+             (input)="onFromInput($any($event.target).value)"
+             placeholder="Type city, code or airport (e.g., Kolkata, CCU)">
+      @if (submitted && !fromSel) {
+        <div class="invalid-feedback d-block">Please select a city</div>
+      }
+
+      @if (showFrom) {
+        <div class="suggest-box">
+          @for (a of fromResults; track a.code) {
+            <div class="suggest-item" (click)="chooseFrom(a)">
+              <div class="city-line">{{a.city}}</div>
+              <div class="meta-line">{{a.code}}, {{a.name}}</div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Swap -->
+    <div class="col-md-1 d-flex justify-content-center align-items-end">
+      <button type="button" class="swap-btn" (click)="swap()" title="Swap From/To">⇄</button>
+    </div>
+
+    <!-- To -->
+    <div class="col-md-4 position-relative">
+      <label class="form-label">To</label>
+      <input class="form-control"
+             [class.is-invalid]="submitted && !toSel"
+             [value]="toText"
+             (focus)="onToFocus()"
+             (input)="onToInput($any($event.target).value)"
+             placeholder="Type city, code or airport (e.g., Chennai, MAA)">
+      @if (submitted && !toSel) {
+        <div class="invalid-feedback d-block">Please select a city</div>
+      }
+
+      @if (showTo) {
+        <div class="suggest-box">
+          @for (a of toResults; track a.code) {
+            <div class="suggest-item" (click)="chooseTo(a)">
+              <div class="city-line">{{a.city}}</div>
+              <div class="meta-line">{{a.code}}, {{a.name}}</div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Date -->
+    <div class="col-md-3">
+      <label class="form-label">Departure</label>
+      <input type="date" class="form-control"
+             [class.is-invalid]="submitted && !dateValid()"
+             [(ngModel)]="dateStr" name="dateStr"
+             [min]="minDateStr">
+      @if (submitted && !dateValid()) {
+        <div class="invalid-feedback d-block">Choose today or later</div>
+      }
+    </div>
+
+    <!-- Submit -->
+    <div class="col-12 mt-2">
+    <button class="btn btn-primary" type="submit">Search</button>
+      @if (submitted && fromSel && toSel && fromSel.city === toSel.city) {
+        <span class="text-danger ms-2">From and To cannot be the same</span>
+      }
+    </div>
+
+  </div>
+</form>
+</div> </div>

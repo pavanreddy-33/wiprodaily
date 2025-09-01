@@ -1,0 +1,35 @@
+.card-mmt {
+	border: 1px solid #e9ecef;
+	border-radius: 12px;
+	box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+.it-line {
+	line-height: 1.2rem;
+}
+
+.booking-page {
+	max-width: 980px;
+}
+
+.price-summary {
+	display: flex;
+	justify-content: flex-end;
+	align-items: baseline;
+	gap: 12px;
+}
+.price-summary .label {
+	font-weight: 600;
+}
+.price-summary .amount {
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+@media (max-width: 576px) {
+	.price-summary {
+		justify-content: space-between;
+	}
+	.card-mmt h5 {
+		font-size: 1rem;
+	}
+}

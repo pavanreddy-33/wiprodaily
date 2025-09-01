@@ -1,0 +1,43 @@
+.ticket-card {
+border: 1px solid #e9ecef;
+border-radius: 12px;
+padding: 16px;
+background: #fff;
+box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+.ticket-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 10px;
+}
+.ticket-title { font-weight: 600; }
+.route-title { font-size: 1.1rem; font-weight: 600; }
+.pnr-badge {
+border: 1px solid #e9ecef;
+border-radius: 10px;
+padding: 6px 10px;
+text-align: center;
+min-width: 96px;
+}
+.pnr-code { font-weight: 700; letter-spacing: 1px; }
+.airline-row {
+display: flex; gap: 12px; align-items: center;
+margin: 6px 0 14px 0; font-size: 0.95rem;
+}
+.flight-no, .aircraft { color: #555; }
+.time-city .time { font-size: 1.4rem; font-weight: 700; }
+.time-city .city { font-weight: 600; }
+.time-city .code { color: #666; font-weight: 500; }
+.airport { margin-top: 2px; }
+.duration-chip {
+display: inline-block; padding: 4px 10px; background: #f1f4ff;
+border: 1px solid #dfe6ff; color: #1b4dff; border-radius: 999px; font-weight: 600;
+}
+.traveller-block .label { color: #666; font-size: 0.8rem; }
+.traveller-block .value { font-weight: 600; }
+.amount-row {
+display: flex; justify-content: space-between; align-items: center;
+margin-top: 14px; border-top: 1px dashed #e3e6eb; padding-top: 10px;
+}
+.amount-row .amt { font-size: 1.2rem; font-weight: 700; }

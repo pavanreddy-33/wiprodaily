@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background: #fff;
+  color: #222;
+  font-family: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.app-container {
+  min-height: calc(100vh - 130px);
+  padding-bottom: 30px;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #0a6cff, #2fa7ff);
+  border: none;
+}
+.btn-primary:hover {
+  background: linear-gradient(90deg, #0a58ca, #2f8fff);
+}
+
+.card-mmt {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+}
+
+.badge-pill {
+  border-radius: 50rem;
+  padding: .5rem .8rem;
+}

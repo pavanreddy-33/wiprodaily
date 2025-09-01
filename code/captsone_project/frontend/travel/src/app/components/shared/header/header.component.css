@@ -1,0 +1,12 @@
+.navbar-brand {
+  color: white !important;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.i{
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}

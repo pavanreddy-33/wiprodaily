@@ -1,0 +1,138 @@
+<div class="container mt-4">
+    <div class="row">
+        <!-- Left menu -->
+        <div class="col-md-3">
+            <div class="method-list">
+                @for (m of methods; track m.key) {
+                    <button
+                        type="button"
+                        class="method-item"
+                        [class.active]="activeMethod === m.key"
+                        [class.disabled]="!m.enabled"
+                        (click)="chooseMethod(m.key, m.enabled)"
+                    >
+                        {{ m.label }}
+                    </button>
+                }
+            </div>
+        </div>
+
+        <!-- Right content -->
+        <div class="col-md-9">
+            <div class="card p-3">
+                <h5 class="mb-3">Credit Card</h5>
+
+                <div class="row g-2">
+                    <div class="col-md-6">
+                        <label class="form-label">Card Number</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="payment.cardNumber"
+                            name="cardNumber"
+                            (input)="sanitizeCard()"
+                            inputmode="numeric"
+                            autocomplete="cc-number"
+                            placeholder="16 digits"
+                            required
+                        />
+                        @if (payment.cardNumber && payment.cardNumber.split(' ').join('').length !== 16) {
+                            <small class="text-danger">Enter 16 digits</small>
+                        }
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Name on Card</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="payment.nameOnCard"
+                            name="nameOnCard"
+                            autocomplete="cc-name"
+                            required
+                        />
+                        @if (payment.nameOnCard && payment.nameOnCard.trim().length < 2) {
+                            <small class="text-danger">Name must be at least 2 characters</small>
+                        }
+                    </div>
+
+                    <div class="col-md-2">
+                        <label class="form-label">Expiry MM</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="payment.expiryMonth"
+                            name="expiryMonth"
+                            (input)="sanitizeMonth()"
+                            inputmode="numeric"
+                            autocomplete="cc-exp-month"
+                            placeholder="MM"
+                            required
+                        />
+                    </div>
+
+                    <div class="col-md-2">
+                        <label class="form-label">Expiry YYYY</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="payment.expiryYear"
+                            name="expiryYear"
+                            (input)="sanitizeYear()"
+                            inputmode="numeric"
+                            autocomplete="cc-exp-year"
+                            placeholder="YYYY"
+                            required
+                        />
+                    </div>
+
+                    <div class="col-md-2">
+                        <label class="form-label">CVV</label>
+                        <input
+                            type="password"
+                            class="form-control"
+                            [(ngModel)]="payment.cvv"
+                            name="cvv"
+                            (input)="sanitizeCvv()"
+                            inputmode="numeric"
+                            autocomplete="cc-csc"
+                            placeholder="123"
+                            required
+                        />
+                        @if (payment.cvv && payment.cvv.length !== 3) {
+                            <small class="text-danger">3‑digit CVV</small>
+                        }
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Amount (₹)</label>
+                        <input
+                            class="form-control"
+                            type="number"
+                            [(ngModel)]="payment.amount"
+                            name="amount"
+                            readonly
+                        />
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div class="small text-muted">
+                        @if (disabledReason) {
+                            <span class="text-danger">Cannot pay: {{ disabledReason }}</span>
+                        } @else {
+                            Your card details are securely processed (demo)
+                        }
+                    </div>
+                    <button
+                        class="btn btn-success"
+                        (click)="pay()"
+                        [disabled]="loading || !!disabledReason"
+                    >
+                        {{ loading ? 'Processing...' : 'Pay' }} • ₹ {{ payment.amount | number:'1.0-0' }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

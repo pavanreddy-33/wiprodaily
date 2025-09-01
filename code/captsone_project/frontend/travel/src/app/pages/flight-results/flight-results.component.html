@@ -1,0 +1,68 @@
+@if (!loading) {
+  <div class="container my-4">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card-mmt p-3">
+          <div class="d-flex justify-content-between mb-2">
+            <h6>Filters</h6>
+            <button class="btn btn-link p-0" (click)="clearAll()">CLEAR ALL</button>
+          </div>
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" id="nonStop" [(ngModel)]="nonStop" (change)="applyFilters()">
+            <label class="form-check-label" for="nonStop">Non Stop</label>
+          </div>
+          <hr>
+          <h6>Airlines</h6>
+          @for (a of airlines; track a.name) {
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" [id]="a.name" [(ngModel)]="a.checked" (change)="applyFilters()">
+              <label class="form-check-label" [for]="a.name">{{a.name}}</label>
+            </div>
+          }
+          <hr>
+          <h6>Price Range</h6>
+          <input type="range" class="form-range" [min]="minPrice" [max]="maxPrice" [(ngModel)]="price" (change)="applyFilters()">
+          <div>Up to ₹{{price | number}}</div>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        @if (filtered.length === 0) {
+          <div class="alert alert-info">
+            No Flights available matching your criterion.
+          </div>
+        } @else {
+          @for (f of filtered; track f.id) {
+            <div class="card-mmt p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-2">
+                  <strong>{{f.airline}}</strong><br>
+                  {{f.flightNumber}}
+                </div>
+                <div class="col-md-2">
+                  {{f.departureTime}}<br>
+                  {{f.origin}}
+                </div>
+                <div class="col-md-2 text-center">
+                  {{f.durationMinutes | duration}}<br>
+                  {{f.stops === 0 ? 'Non Stop' : f.stops + ' Stop'}}
+                </div>
+                <div class="col-md-2">
+                  {{f.arrivalTime}}<br>
+                  {{f.destination}}
+                </div>
+                <div class="col-md-2">
+                  <strong>₹{{f.price | number}}</strong>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-primary" (click)="book(f)">Book</button>
+                </div>
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+} @else {
+  <app-loading-spinner></app-loading-spinner>
+}
