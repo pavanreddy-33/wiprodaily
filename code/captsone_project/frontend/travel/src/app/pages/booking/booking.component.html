@@ -2,7 +2,7 @@
   <div class="container my-4 booking-page">
     <!-- Itinerary -->
     <div class="card-mmt p-3 mb-3">
-      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div class="d-flex justify-content-between a align-items-center flex-wrap gap-2">
         <div>
           <h5>{{ flight.origin }} → {{ flight.destination }}</h5>
           <div class="text-muted">
@@ -46,11 +46,11 @@
     <div class="card-mmt p-3">
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h5 class="mb-0">Passenger Details</h5>
-        <div class="d-flex align-items-center gap-3">
+        <!-- <div class="d-flex align-items-center gap-3">
           <div class="text-muted small"><span class="text-danger">*</span> indicates required field</div>
           <button type="button" class="btn btn-sm btn-outline-primary" (click)="addPassenger()" [disabled]="passengers.length >= maxPassengers">+ Add passenger</button>
           @if (passengers.length >= maxPassengers) { <div class="small text-muted">Max {{ maxPassengers }} passengers</div> }
-        </div>
+        </div> -->
       </div>
 
       <form (ngSubmit)="proceed()" #pf="ngForm" novalidate>
@@ -163,6 +163,7 @@
                   class="form-control"
                   name="passportId-{{i}}"
                   [(ngModel)]="passengers[i].passportId"
+                  required
                 />
               </div>
 
@@ -180,8 +181,8 @@
         }
 
         <div class="d-flex justify-content-end mt-2">
-          <button type="button" class="btn btn-outline-primary me-2" (click)="addPassenger()" [disabled]="passengers.length >= maxPassengers">+ Add passenger</button>
-          <button class="btn btn-primary" type="submit" [disabled]="submitting || !formValid()">
+          <!-- <button type="button" class="btn btn-outline-primary me-2" (click)="addPassenger()" [disabled]="passengers.length >= maxPassengers">+ Add passenger</button> -->
+          <button class="btn btn-success" type="submit" [disabled]="submitting || !formValid()">
             {{ submitting ? 'Processing...' : 'Proceed to Pay' }}
           </button>
         </div>

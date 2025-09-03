@@ -25,3 +25,8 @@ background: #f8f9fa;
 border-radius: 12px;
 box-shadow: 0 4px 16px rgba(0,0,0,0.04);
 }
+
+.i{
+    height: 60px;
+    width: 100px;
+}
